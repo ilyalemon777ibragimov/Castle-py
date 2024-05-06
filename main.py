@@ -31,7 +31,7 @@ def pve(hp,eniv):
 
 			pc = random.randint(1, 6)
 			ec = random.randint(1, 6)
-			print('Счёт-'+str(pc)+':'+str(ec))
+			print('Счёт '+str(pc)+':'+str(ec))
 			
 			if pc>=ec:
 				if pc>=5:
