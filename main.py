@@ -1,5 +1,29 @@
 import random
 
+print('Чтение  сохранений после последних сессий... Пожалуйста подождите')
+print(' ')
+hp1=5
+
+save=open("save.txt")
+kills=int(save.readline())
+krits=int(save.readline())
+pvekols=int(save.readline())
+save.close()
+
+s=input('Чтение заершено. Ведите 1, если хотите чтобы игра продолжилась         ')
+if s=="1":
+        print("Отлично, продолжим игру через \n 3 \n 2 \n 1....")
+        kill=kills
+        krit=krits
+else:
+        print("Отлично, начнём игру через \n 3 \n 2 \n 1....")
+        kill=0
+        krit=0
+print('\n \n \n')
+print(' ')
+print(' ')
+
+
 print('  _____          _   _                ')
 print(' / ____|        | | | |             ')
 print('| |     __ _ ___| |_| | ___   _ __   _   _ ')
@@ -10,10 +34,23 @@ print('                             | |      __/ |')
 print('                             |_|     |___ /')
 
 
-hp1=5
-kill=0
-krit=0
-pvekol=int(input('Введите количество pve >>> '))
+
+
+print("Главное меню")
+e=input("Нажмите Enter, чтобы начать играть. Для просмотра статистики введите stat           ")
+if e=="stat":
+        print("Вы совершили "+str(kills)+" убийств")
+        print("Критический урон был нанесён "+str(krits)+" раз")
+        print("Последний цикл - "+str(pvekols)+" PVE")
+        a=input('Нажмите Enter, чтобы начать играть')
+if e=="ыефе":
+        print("Это надо было сделать с английской раскладкой... но видимо вам как и мне на это плевать.")
+        print("Вы совершили "+str(kills)+" убийств")
+        print("Критический урон был нанесён "+str(krits)+" раз")
+        print("Последний цикл - "+str(pvekols)+" PVE")
+        a=input('Нажмите Enter, чтобы начать играть')
+pvekol=int(input('Введите количество PVE >>> '))
+pvekolsave=pvekol
 def pve(hp,eniv):
 	print('На вас напал '+eniv)
 	pc=0
@@ -70,7 +107,15 @@ while pvekol>0:
 
 
 print('Вы совершили '+str(kill)+' убийств')	
-print('Вы нанесли кретический урон '+str(krit)+' раз')				
+print('Вы нанесли кретический урон '+str(krit)+' раз')
+print('Происходит запись сохранения...')
+print('Не закрывайте игру до конца сохранения, чтобы не повредить файл сохранений')
+save=open("save.txt", "w")
+save.write("{0}\n".format(kill))
+save.write("{0}\n".format(krit))
+save.write("{0}\n".format(pvekolsave))
+save.close()
+print('Сохранение завершено, можно закрыть игру')
 	
 	
 	
